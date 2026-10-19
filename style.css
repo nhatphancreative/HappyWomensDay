@@ -47,3 +47,13 @@
 @keyframes hint-button-nudge{50%{filter:brightness(1.18);transform:translateY(-2px)}}
 @media(max-width:720px){.hint-banner{top:8px;width:calc(100% - 20px);padding:8px 9px;font-size:10px;line-height:1.55}.hint-button{margin-top:12px;padding:11px 9px;font-size:8px}.hint-button b{font-size:7px;padding:4px 5px}}
 @media(prefers-reduced-motion:reduce){.hint-target .hint-ghost,.hint-target .hint-outline,.piece.hint-source,.hint-button.hint-attention{animation:none!important}}
+/* Mobile-only play flow: choose a piece, keep tools pinned nearby, then build. */
+.mobile-game-toolbar{display:none}
+@media(max-width:720px){
+  .game-layout{display:flex;flex-direction:column;gap:12px}
+  .pieces-window{order:1}
+  .mobile-game-toolbar{order:2;display:flex;flex-direction:column;gap:8px;position:sticky;top:6px;z-index:7;padding:9px;background:#fff9e8;border:2px solid #193c34;box-shadow:3px 4px 0 #092c27}
+  .mobile-game-toolbar .hint-button{width:100%;margin:0;min-height:48px}
+  .mobile-game-toolbar .tool-controls{width:100%;margin:0}
+  .build-window{order:3}
+}
