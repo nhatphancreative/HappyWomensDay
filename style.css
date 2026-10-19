@@ -28,3 +28,23 @@
 .guide-tip:not(.hidden)::before{content:'✦';position:absolute;left:12px;top:11px;color:#cc6a85;font-size:14px}
 @keyframes guide-pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:720px){#game h2{font-size:clamp(11px,3.25vw,15px);line-height:2.1;margin:13px 0 11px}.letter h2{font-size:clamp(12px,3.8vw,17px);line-height:1.9}.guide-tip{font-size:9px;padding:9px 9px 9px 31px}.guide-tip:not(.hidden)::before{left:10px;top:9px}}
+
+/* A clear, player-triggered hint points to the next unfinished piece on the board. */
+#build-area{position:relative}
+.hint-banner{position:absolute;z-index:3;top:12px;left:50%;transform:translateX(-50%);width:min(calc(100% - 28px),480px);padding:10px 14px;border:2px solid var(--ink);background:#fff8df;color:#315543;box-shadow:3px 3px 0 #d46a83;font-family:'Tiny5','Press Start 2P',var(--mono);font-size:clamp(10px,1.3vw,14px);line-height:1.65;text-align:center;pointer-events:none;animation:hint-banner-in .28s steps(3,end) both}
+.hint-target .hint-ghost{opacity:.35;animation:hint-ghost-pulse .9s steps(2,end) infinite}
+.hint-target .hint-outline{animation:hint-outline-pulse .9s steps(2,end) infinite}
+.hint-button{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin:14px 0 2px;padding:13px 12px;border:2px solid #214b3c;background:var(--pink);color:#243f34;box-shadow:0 4px 0 #b85272,0 6px 0 #17392f;font-family:'Tiny5','Press Start 2P',var(--mono);font-size:clamp(9px,1vw,11px);line-height:1.5;letter-spacing:.15px;text-align:left;transition:transform .12s,box-shadow .12s,filter .12s}
+.hint-button:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 6px 0 #b85272,0 8px 0 #17392f}
+.hint-button:active{transform:translateY(3px);box-shadow:0 1px 0 #b85272}
+.hint-button:disabled{cursor:default;filter:saturate(.55);opacity:.72;transform:none;box-shadow:0 2px 0 #b85272}
+.hint-button b{flex:none;padding:5px 6px;border:1px solid #7e6370;background:#fff4d9;font-size:8px;font-weight:400;white-space:nowrap}
+.hint-button.hint-attention{animation:hint-button-nudge .55s steps(2,end) 3}
+.piece.hint-source{position:relative;z-index:1;border-color:#c84d72;background:#fff0cf;box-shadow:0 0 0 2px #ff9fbc,3px 3px 0 #be6a78;animation:hint-card-pulse .9s steps(2,end) infinite}
+@keyframes hint-banner-in{from{opacity:0;translate:0 5px}to{opacity:1;translate:0 0}}
+@keyframes hint-ghost-pulse{50%{opacity:.72}}
+@keyframes hint-outline-pulse{50%{stroke:#f5a446;stroke-width:2.8;stroke-dasharray:1 2}}
+@keyframes hint-card-pulse{50%{background:#ffe0a4;box-shadow:0 0 0 3px #ff9fbc,3px 3px 0 #be6a78}}
+@keyframes hint-button-nudge{50%{filter:brightness(1.18);transform:translateY(-2px)}}
+@media(max-width:720px){.hint-banner{top:8px;width:calc(100% - 20px);padding:8px 9px;font-size:10px;line-height:1.55}.hint-button{margin-top:12px;padding:11px 9px;font-size:8px}.hint-button b{font-size:7px;padding:4px 5px}}
+@media(prefers-reduced-motion:reduce){.hint-target .hint-ghost,.hint-target .hint-outline,.piece.hint-source,.hint-button.hint-attention{animation:none!important}}
