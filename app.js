@@ -63,8 +63,8 @@ $('#check').onclick=()=>{pieces.forEach((_,i)=>settle(i));render();if(!completin
 function confetti(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<65;i++){const el=document.createElement('span');el.className='particle';el.textContent=['✦','♥','▪','✿'][i%4];el.style.cssText=`left:${Math.random()*100}%;top:-30px;color:${['#ffa5bd','#ffe295','#9fc88b'][i%3]};font-size:${8+Math.random()*13}px;animation-duration:${3+Math.random()*5}s;animation-delay:${Math.random()*2}s`;$('#particles').append(el);el.addEventListener('animationend',()=>el.remove())}}
 
 // The scenery is painted on a deliberately tiny canvas, then enlarged into pixels.
-const canvas=$('#garden'),ctx=canvas.getContext('2d');
-function scenery(){const W=Math.ceil(innerWidth/4),H=Math.ceil(innerHeight/4);canvas.width=W;canvas.height=H;ctx.fillStyle='#103d36';ctx.fillRect(0,0,W,H);let seed=31;const rand=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};function rect(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),w,h)}
+const canvas=$('#garden'),ctx=canvas.getContext('2d'),gardenStarted=performance.now();let gardenFrame=0;
+function scenery(now=performance.now()){const W=Math.ceil(innerWidth/4),H=Math.ceil(innerHeight/4);canvas.width=W;canvas.height=H;ctx.fillStyle='#103d36';ctx.fillRect(0,0,W,H);let seed=31;const rand=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};function rect(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),w,h)}
 // Muted stars and faraway clouds.
 for(let i=0;i<65;i++){const x=rand()*W,y=rand()*H;rect(x,y,1,1,i%3?'#416452':'#8b9770')}
 function cloud(x,y,s){const c='#456c58',h='#64806a';rect(x,y,25*s,4*s,c);rect(x+5*s,y-4*s,15*s,5*s,c);rect(x+9*s,y-7*s,7*s,4*s,c);rect(x+9*s,y-7*s,7*s,s,h);rect(x+2*s,y+4*s,23*s,s,'#315b4a')}
@@ -76,9 +76,11 @@ function flower(x,y,color){rect(x,y-10,1,10,'#72945b');rect(x-3,y-5,3,2,'#5f8651
 for(let i=0;i<12;i++){const x=i<6?8+i*8:W-48+(i-6)*8;flower(x,ground-1,['#c97a92','#bba46a','#8ca275'][i%3])}
 // A tiny garden sign.
 if(W>230){rect(29,ground-35,2,35,'#6c7b59');rect(14,ground-47,35,15,'#354d39');rect(15,ground-46,33,12,'#c8c89c');ctx.font='5px monospace';ctx.fillStyle='#466044';ctx.fillText('BLOOM',20,ground-38);rect(16,ground-33,31,1,'#77886a')}
-// Little rabbit in the garden.
-const rx=W-31,ry=ground-8;rect(rx,ry,10,7,'#b4b795');rect(rx+5,ry-5,7,8,'#d0cfaa');rect(rx+5,ry-13,2,9,'#d0cfaa');rect(rx+9,ry-12,2,8,'#d0cfaa');rect(rx+6,ry-12,1,6,'#a58e82');rect(rx+10,ry-11,1,5,'#a58e82');rect(rx+10,ry-3,1,1,'#354d39');rect(rx-2,ry+2,3,3,'#d0cfaa');rect(rx+1,ry+7,4,1,'#d0cfaa')
-}window.addEventListener('resize',scenery);scenery();tone(523,.22);music();
+// Little rabbit hops back and forth across the garden path.
+const elapsed=(now-gardenStarted)/1000,travel=Math.max(1,W-26),lap=(elapsed/6)%2,headingLeft=lap>=1,progress=headingLeft?2-lap:lap,rx=Math.round(5+progress*travel),hop=Math.round(Math.max(0,Math.sin(elapsed*Math.PI*4))*6),ry=ground-8-hop;
+if(headingLeft){ctx.save();ctx.translate(rx*2+12,0);ctx.scale(-1,1)}
+rect(rx,ry,10,7,'#b4b795');rect(rx+5,ry-5,7,8,'#d0cfaa');rect(rx+5,ry-13,2,9,'#d0cfaa');rect(rx+9,ry-12,2,8,'#d0cfaa');rect(rx+6,ry-12,1,6,'#a58e82');rect(rx+10,ry-11,1,5,'#a58e82');rect(rx+10,ry-3,1,1,'#354d39');rect(rx-2,ry+2,3,3,'#d0cfaa');rect(rx+1,ry+7,4,1,'#d0cfaa');if(headingLeft)ctx.restore()
+}window.addEventListener('resize',()=>scenery());function animateScenery(now){if(now-gardenFrame>=80){gardenFrame=now;scenery(now)}requestAnimationFrame(animateScenery)}scenery();requestAnimationFrame(animateScenery);tone(523,.22);music();
 
 // Keep the pot label anchored to the SVG artwork while its text stays readable.
 function positionPotLabel(){
