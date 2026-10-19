@@ -1,0 +1,126 @@
+/* Local pixel fonts with complete Vietnamese coverage. */
+@font-face{font-family:'PVN5 Garden Pixel';src:url('assets/fonts/pvn5-garden-pixel.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:'Garden UI';src:url('assets/fonts/VT323-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-SemiBold.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'Be Vietnam Pro';src:url('assets/fonts/BeVietnamPro-Bold.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
+
+:root{--display:'PVN5 Garden Pixel',monospace;--pixel-ui:'Garden UI',monospace;--mono:var(--pixel-ui);--sans:'Be Vietnam Pro',sans-serif}
+body{font-family:var(--sans)}
+.intro h1,.intro h1 .occasion-date,.name-entry-card h2,#game h2,.letter h2{font-family:var(--display);font-weight:700;font-synthesis:none;letter-spacing:0}
+.intro h1{font-size:clamp(42px,6.7vw,96px);line-height:1.08;margin:24px 0 22px;text-shadow:3px 3px 0 #0a2e28}
+.intro h1 .occasion-date{display:block;font-size:.4em;line-height:1.2;margin-bottom:18px;letter-spacing:3px}
+.intro h1 .occasion-date+br{display:none}
+.intro h1 .title-star{font-size:.3em;margin-left:12px}
+.name-entry-card h2{font-size:40px;line-height:1.35}
+#game h2{font-size:56px;line-height:1.45;margin:18px 0 15px;text-shadow:3px 3px 0 #082d27}
+.letter h2{font-size:38px;line-height:1.4}
+
+/* Pixel UI has its own comfortable reading sizes; body wishes stay easy to read. */
+.wordmark-main{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:0}
+.sound{font-size:18px;line-height:1.1;letter-spacing:.4px}
+.eyebrow{font-size:18px;letter-spacing:2px}
+.intro-copy{font-family:var(--pixel-ui);font-size:23px;line-height:1.35}
+.window-bar{font-size:18px;font-weight:400;letter-spacing:.4px}
+.window-bottom{font-size:16px;line-height:1.15;letter-spacing:.4px}
+.garden-label{font-size:15px;letter-spacing:.5px}
+.primary,.name-entry-inner .primary{font-family:var(--pixel-ui);font-size:24px;line-height:1.1;font-weight:400;letter-spacing:1px}
+.tiny,footer{font-size:15px;line-height:1.3;letter-spacing:1px}
+footer .credit{font-size:15px}
+.name-entry-kicker,.letter-kicker{font-size:16px;letter-spacing:1px}
+.name-entry-inner label{font-family:var(--pixel-ui);font-size:18px;font-weight:400}
+.name-entry-inner input{font-family:var(--sans)}
+.name-note{font-size:12px}
+.flower-tag{font-size:18px;line-height:1.3;letter-spacing:1px}
+.letter-text{font-size:14px;line-height:1.9}
+.signature{font-size:12px;line-height:1.6}
+.end-layout+.primary{font-size:22px}
+
+#game{font-family:var(--pixel-ui)}
+#game .eyebrow{font-size:18px}
+#game .game-copy{font-size:22px;line-height:1.4;max-width:800px;margin-bottom:22px}
+.game-layout{max-width:1040px;grid-template-columns:minmax(0,1fr) 310px}
+.build-window{scroll-margin-top:12px}
+#game .planting-guide{max-width:1040px;gap:10px}
+#game .planting-guide span{font-family:var(--pixel-ui);font-size:18px;line-height:1.1;padding:12px 10px;letter-spacing:.3px}
+#game .planting-guide b{font-size:22px;font-weight:400}
+#game .window-bar{font-family:var(--pixel-ui);font-size:19px;font-weight:400}
+#game .window-bottom{font-family:var(--pixel-ui);font-size:16px;line-height:1.2;letter-spacing:0}
+#game .pieces-inner{padding:16px}
+#game .pieces-inner>p{font-family:var(--pixel-ui);font-size:20px;line-height:1.2;margin-bottom:14px}
+#game #pieces{gap:10px}
+#game .piece{font-family:var(--pixel-ui);font-size:19px;line-height:1.1;min-height:91px;padding:9px 5px}
+#game .piece svg{height:48px;margin-bottom:6px}
+#game .pieces-inner .encourage{font-size:19px;line-height:1.2;margin-top:12px}
+#game .tool-controls button,#game .nudge-controls button{font-family:var(--pixel-ui);font-size:22px;line-height:1;min-height:40px}
+#game .nudge-controls button{width:40px}
+#game .control-note{font-family:var(--pixel-ui);font-size:17px!important;line-height:1.25;letter-spacing:0}
+#game .check-button{font-family:var(--pixel-ui);font-size:21px;line-height:1.1;padding:12px 8px}
+#game .game-note{font-size:21px;line-height:1.3;margin-top:20px}
+#game .game-actions .text-button{font-family:var(--pixel-ui);font-size:21px;line-height:1.2;min-height:44px}
+
+/* These labels stay at readable CSS sizes instead of shrinking with the SVG. */
+.pot-label{position:absolute;z-index:2;left:50%;top:77%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;max-width:calc(100% - 24px);padding:4px 10px;background:#f4efd8e8;color:#365b43;font-family:var(--pixel-ui);text-align:center;line-height:1;pointer-events:none;white-space:nowrap}
+.pot-label strong{font-size:22px;font-weight:400;letter-spacing:.6px}
+.pot-label span{font-size:18px;color:#61744f}
+
+.hint-button{font-family:var(--pixel-ui);font-size:23px;font-weight:400;font-synthesis:none;line-height:1.1;letter-spacing:0;flex-wrap:wrap;gap:9px;padding:13px 12px;min-height:56px}
+.hint-button>span{white-space:nowrap}
+.hint-button b{font-family:var(--pixel-ui);font-size:18px;font-weight:400;line-height:1;letter-spacing:0;padding:5px 7px}
+.hint-banner{position:relative;top:auto;left:auto;transform:none;font-family:var(--pixel-ui);font-size:24px;font-weight:400;font-synthesis:none;line-height:1.15;letter-spacing:0;padding:12px 16px;width:100%;border:0;border-bottom:2px solid var(--ink);background:#fff5db;box-shadow:none;text-wrap:pretty}
+
+@media(max-width:720px){
+  .game-layout{grid-template-columns:1fr;max-width:480px}
+  #game h2{font-size:clamp(34px,7.5vw,48px);line-height:1.4;margin:15px 0 14px}
+  #game .game-copy{font-size:21px;line-height:1.25;max-width:480px}
+  #game .planting-guide{gap:6px;margin-bottom:18px}
+  #game .planting-guide span{font-size:17px;padding:10px 5px;gap:5px;letter-spacing:0}
+  #game .planting-guide b{font-size:21px}
+  #game .window-bar{font-size:18px;padding:10px}
+  #game .window-bottom{font-size:15px;padding:10px;gap:8px}
+  #game .pieces-inner{padding:14px}
+  #game #pieces{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  #game .piece{font-size:20px;min-height:96px}
+  #game .piece svg{height:51px}
+  #game .game-actions{gap:14px;flex-wrap:wrap}
+  #game .game-actions .text-button{font-size:20px}
+  .hint-button{font-size:23px;padding:13px 12px}
+  .hint-button b{font-size:18px;padding:5px 7px}
+  .hint-banner{font-size:22px;line-height:1.1;padding:10px 12px}
+  .pot-label{padding:3px 8px;gap:2px}
+  .pot-label strong{font-size:21px}
+  .pot-label span{font-size:17px}
+}
+@media(max-width:650px){
+  .intro h1{font-size:clamp(31px,7.8vw,50px);line-height:1.2;margin:23px 0 19px}
+  .intro h1 .occasion-date{font-size:.5em;margin-bottom:16px;letter-spacing:2px}
+  .intro h1 .title-star{font-size:.32em;margin-left:7px}
+  .intro-copy{font-size:21px}
+  .eyebrow{font-size:16px;letter-spacing:1.3px}
+  .wordmark-main{font-size:18px}
+  .sound{font-size:17px;padding:9px 10px}
+  .sound span{font-size:16px}
+  .sound span:after{content:none}
+  .window-bar{font-size:16px}
+  .window-bottom{font-size:14px}
+  .name-entry-card h2{font-size:32px;line-height:1.3}
+  .name-entry-inner .primary{font-size:23px}
+  .letter h2{font-size:32px;line-height:1.4}
+  .tiny,footer,footer .credit{font-size:14px;letter-spacing:.5px}
+  footer{gap:10px}
+}
+@media(min-width:721px) and (max-height:850px){
+  header{height:65px}
+  .intro{padding-top:8px;padding-bottom:15px}
+  .intro h1{font-size:clamp(40px,5.6vw,74px);line-height:1.02;margin:16px 0}
+  .intro h1 .occasion-date{margin-bottom:10px}
+  .intro-copy{font-size:21px;line-height:1.2;margin-bottom:18px}
+  .intro-window{width:330px;margin-top:0;margin-bottom:18px}
+  .intro-window .preview{height:170px}
+  .intro-window .hero-rose{height:150px}
+  .intro-window .window-bar{padding:8px 11px}
+  .intro-window .window-bottom{padding:8px 11px}
+  .intro .primary{padding:12px 26px;font-size:23px}
+  .intro .tiny{margin-top:17px}
+  footer{padding:14px 0}
+}
