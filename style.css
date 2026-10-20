@@ -47,6 +47,10 @@
 @keyframes hint-button-nudge{50%{filter:brightness(1.18);transform:translateY(-2px)}}
 @media(max-width:720px){.hint-banner{top:8px;width:calc(100% - 20px);padding:8px 9px;font-size:10px;line-height:1.55}.hint-button{margin-top:12px;padding:11px 9px;font-size:8px}.hint-button b{font-size:7px;padding:4px 5px}}
 @media(prefers-reduced-motion:reduce){.hint-target .hint-ghost,.hint-target .hint-outline,.piece.hint-source,.hint-button.hint-attention{animation:none!important}}
+.skip-gift-button{display:flex;align-items:center;justify-content:center;gap:10px;width:min(100%,460px);min-height:54px;margin:2px auto 22px;padding:10px 16px;border:3px solid #ffe08b;background:#ff8eae;color:#173e35;box-shadow:0 4px 0 #b54868,0 7px 0 #092c27;font-family:var(--pixel-ui);font-size:25px;line-height:1.05;letter-spacing:.2px;cursor:pointer;transition:transform .14s,filter .14s,box-shadow .14s}
+.skip-gift-button:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 6px 0 #b54868,0 9px 0 #092c27}
+.skip-gift-button:active{transform:translateY(3px);box-shadow:0 1px 0 #b54868,0 3px 0 #092c27}
+@media(max-width:720px){.skip-gift-button{width:100%;min-height:52px;margin:0 auto 16px;padding:9px 8px;font-size:22px;gap:7px}}
 /* Mobile-only play flow: choose a piece, keep tools pinned nearby, then build. */
 .mobile-game-toolbar{display:none}
 @media(max-width:720px){
